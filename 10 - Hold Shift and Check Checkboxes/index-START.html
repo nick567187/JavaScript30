@@ -96,6 +96,76 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+  let lastChecked;
+ 
+  function shiftClick(event) {
+    
+    let inBetween = false;
+    
+    if (event.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }  
+
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', shiftClick));
+  // const inbox = document.querySelector('.inbox');
+  // let shifting = false;
+  // let pointer;
+  // let shiftPointer;
+  // const inputs = document.querySelectorAll('input');
+
+  // function keyDown(event) {
+  //   if (event.shiftKey) {
+  //     shifting = true;
+  //   }
+  // }
+
+  // function keyUp(event) {
+  //   shifting = false;
+  // }
+
+  // function shiftClick(event) {
+  //   if (shifting) {
+  //     for (var i = 0; i < inputs.length; i++) {
+  //       if (inputs[i] === event.target) {
+  //         shiftPointer = i;
+  //       }
+  //     } 
+  //     if (pointer < shiftPointer) {
+  //       for (var i = pointer; i <= shiftPointer; i++) {
+  //         inputs[i].checked = true;
+  //       }        
+  //     } else {
+  //       for (var i = pointer; i >= shiftPointer; i--) {
+  //         inputs[i].checked = true;
+  //       } 
+  //     }
+  //   } else {
+  //     for (var i = 0; i < inputs.length; i++) {
+  //       if (inputs[i] === event.target) {
+  //         pointer = i;
+  //       }
+  //     } 
+  //   }
+
+  // }
+
+  // inbox.addEventListener('keydown', keyDown);
+  // inbox.addEventListener('keyup', keyUp);
+  // inbox.addEventListener('click', shiftClick);
 </script>
 </body>
 </html>

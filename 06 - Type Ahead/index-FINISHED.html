@@ -40,6 +40,8 @@ function displayMatches() {
     const regex = new RegExp(this.value, 'gi');
     const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
     const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    console.log(cityName, 'city');
+    console.log(stateName, 'state');
     return `
       <li>
         <span class="name">${cityName}, ${stateName}</span>
